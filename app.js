@@ -324,7 +324,7 @@ function list(path, id = '', fallback = false) {
     console.log(id);
     var containerContent = `<div class="container">${UI.fixed_header ?'<br>': ''}
     <div id="update"></div>
-    <div id="head_md" style="display:none; padding: 10px 10px;"></div>
+    <div id="head_md" style="display:none; padding: 20px 20px;"></div>
     <div class="container" id="select_items" style="padding: 0px 50px 10px; display:none;">
       <div class="d-flex align-items-center justify-content-between">
         <div class="form-check mr-3">
