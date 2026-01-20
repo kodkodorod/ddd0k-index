@@ -336,7 +336,7 @@ function list(path, id = '', fallback = false) {
     <div class="${UI.path_nav_alert_class} d-flex align-items-center" role="alert" style="margin-bottom: 0; padding-bottom: 0rem;">
       <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
         <ol class="breadcrumb" id="folderne">
-          <li class="breadcrumb-item"><a href="/">🏠 Home</a></li>`;
+          <li class="breadcrumb-item"><a href="/">Home</a></li>`;
 
 	var navfulllink = window.location.pathname;
 	var navarray = navfulllink.split('/').filter(Boolean);
