@@ -123,16 +123,15 @@ function render(path) {
 
 // Render title
 function title(path) {
-	path = decodeURI(path);
-	var cur = window.current_drive_order || 0;
-	var drive_name = window.drive_names[cur];
-	path = path.replace(`/${cur}:`, '');
-	// $('title').html(document.siteName + ' - ' + path);
-	var model = window.MODEL;
-	if (model.is_search_page)
-		$('title').html(`${drive_name} - Search results for ${model.q} `);
-	else
-		$('title').html(`${drive_name} - ${path}`);
+    path = decodeURIComponent(path);
+    const cur = window.current_drive_order || 0;
+    const drive_name = window.drive_names[cur];
+    path = path.replace(`/${cur}:`, '');
+    const model = window.MODEL;
+    if (model.is_search_page)
+        $('title').html(`${drive_name} - Search results for ${decodeURIComponent(model.q)} `);
+    else
+        $('title').html(`${drive_name} - ${path}`);
 }
 
 // Render the navigation bar
