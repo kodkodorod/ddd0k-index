@@ -344,7 +344,7 @@ function list(path, id = '', fallback = false) {
 
 	navarray.forEach(function(item, index) {
 		currentPath += item + '/';
-		var displayName = item;
+		var displayName = decodeURIComponent(item);
 		if (index === 0 && !isNaN(item)) {
 			displayName = item + ':';
 		}
