@@ -212,7 +212,7 @@ function requestListPath(path, params, resultCallback, authErrorCallback, retrie
 		page_index: params['page_index'] || 0
 	};
 	$('#update').show();
-	document.getElementById('update').innerHTML = `<div class='alert alert-info' role='alert'> Connecting...</div></div></div>`;
+	document.getElementById('update').innerHTML = `<div class='alert alert-info' role='alert'> CONNECTING ‥</div></div></div>`;
 	if (fallback) {
 		path = "/0:fallback"
 	}
@@ -313,7 +313,7 @@ function requestSearch(params, resultCallback, retries = 3) {
 			});
 	}
 
-	$('#update').html(`<div class='alert alert-info' role='alert'> Connecting...</div></div></div>`);
+	$('#update').html(`<div class='alert alert-info' role='alert'> CONNECTING ‥</div></div></div>`);
 	performRequest(retries);
 }
 
