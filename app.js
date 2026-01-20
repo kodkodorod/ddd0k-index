@@ -348,7 +348,7 @@ function list(path, id = '', fallback = false) {
 		if (index === 0 && !isNaN(item)) {
 			displayName = item + ':';
 		}
-		html += `<li class="breadcrumb-item"><a href="${currentPath}">${displayName}</a></li>`;
+		html += '<li class="breadcrumb-item"><a href="' + currentPath + '">' + displayName + '</a></li>';
 	});
 
 	if (navarray.length > 1) {
