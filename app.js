@@ -321,13 +321,13 @@ function requestSearch(params, resultCallback, retries = 3) {
 // Render file list
 function list(path, id = '', fallback = false) {
 	console.log(id);
-	var containerContent = `<div class="container">${UI.fixed_header ?'<br>': ''}
+	var containerContent = `<div class="container">${UI.fixed_header ? '<br>' : ''}
     <div id="update"></div>
     <div id="head_md" style="display:none; padding: 20px 20px;"></div>
     <div class="container" id="select_items" style="padding: 0px 50px 10px; display:none;">
       <div class="d-flex align-items-center justify-content-between">
         <div class="form-check mr-3">
-          <input class="form-check-input" style="margin-top: 0.3em;margin-right: 0.5em;" type="checkbox" id="select-all-checkboxes">
+          <input class="form-check-input" style="margin-top: 0.3em; margin-right: 0.5em;" type="checkbox" id="select-all-checkboxes">
           <label class="form-check-label" for="select-all-checkboxes">Select all</label>
         </div>
         <button id="handle-multiple-items-copy" style="padding: 5px 10px; font-size: 12px;" class="btn btn-success">Copy</button>
@@ -338,46 +338,28 @@ function list(path, id = '', fallback = false) {
         <ol class="breadcrumb" id="folderne">
           <li class="breadcrumb-item"><a href="/">🏠 Home</a></li>`;
 
-	var navfulllink = window.location.pathname;
-	var navarray = navfulllink.split('/').filter(Boolean);
-	var currentPath = '/';
+  var navfulllink = window.location.pathname;
+  var navarray = navfulllink.split('/').filter(Boolean);
+  var currentPath = '/';
 
-	navarray.forEach(function(item, index) {
-		currentPath += item + '/';
-		var displayName = item;
-		if (index === 0 && !isNaN(item)) {
-			displayName = item + ':';
-		}
-		html += '<li class="breadcrumb-item"><a href="' + currentPath + '">' + displayName + '</a></li>';
-	});
+  navarray.forEach(function(item, index) {
+    currentPath += item + '/';
+    var displayName = item;
+    if (index === 0 && !isNaN(item)) {
+      displayName = item + ':';
+    }
+    containerContent += '<li class="breadcrumb-item"><a href="' + currentPath + '">' + displayName + '</a></li>';
+  });
 
-	if (navarray.length > 1) {
-		for (var i in navarray) {
-			var pathPart = navarray[i];
-			var decodedPathPart = decodeURIComponent(pathPart).replace(/\//g, '%2F');
-			var trimmedPathPart = decodedPathPart.replace(/\?.+/g, "$'");
+  containerContent += '</ol></nav></div>';
 
-			var displayedPathPart = trimmedPathPart.length > 15 ? trimmedPathPart.slice(0, 5) + '...' : trimmedPathPart.slice(0, 15);
+  containerContent += '<div id="list" class="list-group text-break"></div>';
 
-			currentPath += pathPart + '/';
+  containerContent += '<div class="' + UI.file_count_alert_class + ' text-center d-none" role="alert" id="count"><span class="number text-center"></span> | <span class="totalsize text-center"></span></div>';
 
-			if (displayedPathPart === '') {
-				break;
-			}
+  containerContent += '<div id="readme_md" style="display:none; padding: 20px 20px;"></div></div>';
 
-			containerContent += `<li class="breadcrumb-item"><a href="${currentPath}">${displayedPathPart}</a></li>`;
-		}
-	}
-
-	containerContent += `</ol>
-    </nav>
-  </div>
-  <div id="list" class="list-group text-break"></div>
-  <div class="${UI.file_count_alert_class} text-center d-none" role="alert" id="count"><span class="number text-center"></span> | <span class="totalsize text-center"></span></div>
-  <div id="readme_md" style="display:none; padding: 20px 20px;"></div>
-</div>`;
-
-	$('#content').html(containerContent);
+  $('#content').html(containerContent);
 
 	var password = localStorage.getItem('password' + path);
 
