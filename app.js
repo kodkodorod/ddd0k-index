@@ -170,7 +170,7 @@ function nav(path) {
 	var search_bar = `
 </ul>
 <form class="d-flex" method="get" action="/${cur}:search">
-<input class="form-control me-2" name="q" type="search" placeholder="Typin'" aria-label="Search" value="${search_text}" required>
+<input class="form-control me-2" name="q" type="search" placeholder="what are you lookin' for? type here" aria-label="Search" value="${search_text}" required>
 <button class="btn ${UI.search_button_class}" onclick="if($('#search_bar_form>input').val()) $('#search_bar_form').submit();" type="submit">Search</button>
 </form>
 </div>
@@ -212,7 +212,7 @@ function requestListPath(path, params, resultCallback, authErrorCallback, retrie
 		page_index: params['page_index'] || 0
 	};
 	$('#update').show();
-	document.getElementById('update').innerHTML = `<div class='alert alert-info' role='alert'> CONNECTING ‥</div></div></div>`;
+	document.getElementById('update').innerHTML = `<div class='alert alert-info' role='alert'> connecting ‥</div></div></div>`;
 	if (fallback) {
 		path = "/0:fallback"
 	}
@@ -313,7 +313,7 @@ function requestSearch(params, resultCallback, retries = 3) {
 			});
 	}
 
-	$('#update').html(`<div class='alert alert-info' role='alert'> CONNECTING ‥</div></div></div>`);
+	$('#update').html(`<div class='alert alert-info' role='alert'> connecting ‥</div></div></div>`);
 	performRequest(retries);
 }
 
